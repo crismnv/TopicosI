@@ -1,0 +1,42 @@
+.informacion
+{
+    
+    &__title
+    {
+        padding-top: 0.6em ;
+        padding-bottom: 0.6em;
+        font-size: 3em;
+        text-decoration: underline;
+    }
+    &__personal,
+    &__recursos,
+    &__codigo
+    {
+        padding-bottom: 1em;
+        padding-top: 1em;
+    }
+
+    &__secundario
+    {
+        padding-left: 0.9em;
+    }
+    &__link
+    {
+        color: $white;
+        font-size: 1.5em;
+    }
+    &__repositorio
+    {
+       
+        font-size: 2.5em;
+        font-weight: bold;
+        color: $white;
+        
+    }
+}
+
+.icon-git
+{
+    font-size: 1.1em;
+}
+

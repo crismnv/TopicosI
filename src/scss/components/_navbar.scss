@@ -1,0 +1,65 @@
+.main-header
+{
+    color: $c3;
+    background-color: $white;
+}
+
+.header-derecha
+{
+    height: 55px;
+}
+
+.main-menu
+{
+    
+    @include edMenu($bp-menu);
+    &__link
+    {
+        height: 55px;
+        white-space: nowrap;
+        color: inherit;
+        transition: all .3s;   
+        &.active
+        {
+            @include to($bp-menu)
+            {
+                background: $white;
+                color: $c3;
+            }
+            background: $c1;
+            color: $white;
+        }
+    }
+}
+
+.header-izquierda
+{
+    @include from($bp-menu)
+    {
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+    
+}
+
+.main-nav
+{
+    @include edNav(right, $bp-menu);
+
+    @include to($bp-menu)
+    {
+        color: $white;
+        background: $c3;
+        align-self: stretch;
+        margin-top: 55px;
+        width: 50%;
+    }
+}
+
+
+.nav-toggle
+{
+    @include navToggle(15px, $c3);
+    @include hideFrom($bp-menu);
+}

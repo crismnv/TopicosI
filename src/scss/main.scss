@@ -1,0 +1,28 @@
+
+// Importación de EDgrid
+$cssCore: false;
+$devMode: false;
+$gutter : 16px;
+$max-width: 1400px;
+@import "node_modules/ed-grid/ed-grid";
+// Fin Importación de EDgrid
+
+
+// icons
+// @import "./icons/styles";
+// fin icons
+
+// variables
+
+// Colores
+$c1: #77c9d4;
+$c2: #57bc90;
+$c3: #015249;
+$c4: #A5A5AF;
+$white: #fff;
+// breakpoint para el responsive
+$bp-menu: l; 
+
+@import "./base/base.scss";
+@import "./components/navbar";
+@import "./components/informacion";
