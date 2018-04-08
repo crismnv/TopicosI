@@ -20,7 +20,7 @@
 
       <div class="ed-item s-100 main-center informacion__codigo">
         
-        <a href="https://github.com/" target="_blank" class="informacion__repositorio"><i class="icon-git"></i> Repositorio</a>
+        <a href="https://github.com/crismnv/TopicosI" target="_blank" class="informacion__repositorio"><i class="icon-git"></i> Repositorio</a>
       </div>
   
     </div>
