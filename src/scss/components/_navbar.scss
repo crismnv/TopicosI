@@ -2,6 +2,26 @@
 {
     color: $c3;
     background-color: $white;
+    &__title
+    {
+        white-space: nowrap;
+    }
+    &__autor
+    {
+        transform: translateY(3px);
+        height: 45px;
+        transition: all .75s ease-in-out;
+        &:hover
+        {
+            transform: translateY(6px) rotate(180deg);
+        }
+        
+        @include to(m)
+        {
+            // background: red;
+            display: none;
+        }
+    }
 }
 
 .header-derecha
@@ -18,7 +38,7 @@
         height: 55px;
         white-space: nowrap;
         color: inherit;
-        transition: all .3s;   
+        transition: all .4s;   
         &.active
         {
             @include to($bp-menu)
@@ -26,7 +46,7 @@
                 background: $white;
                 color: $c3;
             }
-            background: $c1;
+            background: $c3;
             color: $white;
         }
     }
@@ -63,3 +83,4 @@
     @include navToggle(15px, $c3);
     @include hideFrom($bp-menu);
 }
+

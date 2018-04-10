@@ -1,11 +1,14 @@
 <template>
   <header class="main-header">
       <div class="ed-container">
-        <div class="ed-item s-70 l-30 cross-center header-derecha">
+        <div class="ed-item s-1-3 cross-center header-derecha">
             
             <h2 class="main-header__title ed-item "><i class="icon-curso"></i>Tópicos I</h2>
         </div>
-        <div class="ed-item s-30 l-70 main-end cross-center header-izquierda">
+        <div class="ed-item s-1-3 l-1-3 main-header__autor main-center cross-start">
+                <img class="" src="../static/img/logo-c3.png"   width="130"> 
+        </div>
+        <div class="ed-item  s-2-3 m-1-3 main-end cross-center header-izquierda">
             <div id="nav-toggle" class="nav-toggle">
              </div>
             <nav id="nav" class="main-nav ">
@@ -27,9 +30,6 @@
 
 <script>
 
-import edgrid from '../../node_modules/ed-grid/js/ed-grid'
-
-edgrid.menu('nav', 'menu')
 
 export default {
     name: "NavBar",

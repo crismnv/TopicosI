@@ -1,6 +1,7 @@
 body
 {
     color: $white;
+    min-width: 240px;
     width: 100%;
     background-image: linear-gradient(
         90deg,
@@ -14,7 +15,9 @@ a:hover
     text-decoration: none;
 }
 
-input
+input,
+select,
+textarea
 {
     font-size: 1.5em;
     border-radius: 5px;
@@ -30,13 +33,26 @@ input
    
 }
 
-// hr
-// {
-//     border-color: $c3;
-//     border-width: 1px;
-//     border-style: bold;
-//     width: 100%;
-// }
+select
+{
+    &:focus
+    {
+        background-color: $white;
+        border: 1.5px solid $c3;
+        
+    }
+    // & > option:checked
+    // {
+    //     background-color: $c3;
+    //     color: $white;
+    //     border-radius: 10px;
+    // }
+}
+
+textarea
+{
+    font-size: 2em;
+}
 
 .separador
 {

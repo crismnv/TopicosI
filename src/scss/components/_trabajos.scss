@@ -1,0 +1,26 @@
+.indice-trabajos
+{
+    padding: 3em;
+    text-align: center;
+    &__link
+    {
+        transition: all .7s;
+        background: $white;
+        border-top: 1px solid $c3;
+        border-left: 1px solid $c3;
+        border-right: 1px solid $c3;
+        color: $c3;
+        font-size: 1.5em;
+        &--active
+        {
+            background: $c3;
+            color: $white;
+        }
+    }
+
+    :last-child
+    {
+            border-bottom: 1px solid $c3;
+        
+    }
+}

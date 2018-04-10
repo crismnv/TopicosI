@@ -23,6 +23,7 @@ $white: #fff;
 // breakpoint para el responsive
 $bp-menu: l; 
 
-@import "./base/base.scss";
-@import "./components/navbar";
-@import "./components/informacion";
+@import "./base/_base.scss";
+@import "./components/_navbar";
+@import "./components/_informacion";
+@import "./components/_trabajos";

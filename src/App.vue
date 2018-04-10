@@ -15,12 +15,17 @@ import VueRouter from "vue-router"
 import  NavBar  from "./components/NavBar";
 import  Informacion  from "./components/Informacion";
 import  Trabajos  from "./components/Trabajos";
+import Trabajo1 from './components/trabajos/Trabajo1.vue';
+import Trabajo2 from './components/trabajos/Trabajo2.vue';
 
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/trabajos', component: Trabajos},
-  {path: '/informacion', component: Informacion}
+  {path: '/informacion', component: Informacion},
+  {path: '/trabajos', component: Trabajos, children: [
+    {path: 'trabajo1', component: Trabajo1},
+    {path: 'trabajo2', component: Trabajo2}
+  ]}
 ]
 
 const router = new VueRouter({
@@ -42,11 +47,13 @@ export default {
 
 <style lang="scss">
     @import "./scss/main";
-  .component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s ease;
+  .component-fade-enter-active, .component-fade-leave-active 
+  {
+    transition: opacity .4s ease-in-out;
   }
-    .component-fade-enter, .component-fade-leave-to
-    /* .component-fade-leave-active for <2.1.8 */ {
+  .component-fade-enter, .component-fade-leave-to
+    /* .component-fade-leave-active for <2.1.8 */
+  {
       opacity: 0;
   }
 </style>
