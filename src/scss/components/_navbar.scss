@@ -38,7 +38,7 @@
         height: 55px;
         white-space: nowrap;
         color: inherit;
-        transition: all .4s;   
+        transition: all .4s ease-in-out;   
         &.active
         {
             @include to($bp-menu)

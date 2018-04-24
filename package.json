@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "ed-grid": "^2.1.7",
+    "vis": "^4.21.0",
     "vue": "^2.5.11",
     "vue-router": "^3.0.1"
   },
