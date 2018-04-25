@@ -18,6 +18,7 @@ import  Trabajos  from "./components/Trabajos";
 import Trabajo1 from './components/trabajos/Trabajo1.vue';
 import Trabajo2 from './components/trabajos/Trabajo2.vue';
 
+
 Vue.use(VueRouter)
 
 const routes = [
