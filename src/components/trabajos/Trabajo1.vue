@@ -5,8 +5,25 @@
         <input v-model="nombre" type="text">
     </div>
     <hr class="separador">
-    <div id="mynetwork" class=" ed-item l-80  main-trabajo--1__grafico"></div>
-    <h2 class="ed-item main-center cross-center"> Recorrido: {{recorrido}}</h2>
+    <div id="mynetwork" class=" ed-item l-70  main-trabajo--1__grafico"></div>
+    <div class="main-recorridos ed-item main-center">
+      <h2 class="ed-item main-center cross-center main-recorridos__title"> RECORRIDOS</h2>
+      <div class=" ed-item main-recorrido__contenedor l-50 main-start">
+
+        <h3 class=" main-recorridos__recorrido">
+        <i class="icon-lista"></i> <span>INORDEN: </span>{{recorridoIn}}
+        </h3>
+      
+        <h3 class=" main-recorridos__recorrido">
+          <i class="icon-lista"></i> <span>PREORDEN: </span>{{recorridoPre}}
+        </h3>
+        <h3 class=" main-recorridos__recorrido">
+          <i class="icon-lista"></i> <span>POSTORDEN: </span>{{recorridoPost}}
+        </h3>
+      </div>
+
+    </div>
+    
 
 </div>
 </template>
@@ -15,7 +32,6 @@
 <script>
   import vis from "../../../node_modules/vis/dist/vis.js"
   import Arbol from '../../helpers/Arbol'
-  import iniciarVis from '../../helpers/iniciarVis'
 
 export default {
   name: 'Trabajo1',
@@ -23,7 +39,9 @@ export default {
   {
       return {
           nombre: "Cris",
-          recorrido: '',
+          recorridoIn: '',
+          recorridoPost: '',
+          recorridoPre: '',
       }
   },
   methods:
@@ -44,7 +62,10 @@ export default {
         let izq = [-1, 0, -1, 1, -1, 4, -1]
         let der = [-1, 2, -1, 5, -1, 6, -1]
         let a = new Arbol(info, izq, der, 3)
-        this.recorrido = a.inOrden()
+        // this.recorrido = a.getPreOrden()
+        this.recorridoIn = a.rInOrden
+        this.recorridoPost = a.rPostOrden
+        this.recorridoPre = a.rPreOrden
         this.iniciarVis(info, izq, der,4)
     },
     iniciarVis(nodos, izq, der, raiz)

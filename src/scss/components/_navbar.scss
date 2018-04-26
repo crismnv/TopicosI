@@ -1,3 +1,10 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $c1;
+    z-index: 100;
+}
 .main-header
 {
     color: $c3;

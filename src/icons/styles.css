@@ -41,7 +41,7 @@
 .icon-informacion:before {
   content: "\61";
 }
-.icon-trabajos:before {
+.icon-vieta-1:before {
   content: "\62";
 }
 .icon-curso:before {
@@ -52,4 +52,7 @@
 }
 .icon-git:before {
   content: "\66";
+}
+.icon-lista:before {
+  content: "\64";
 }

@@ -15,6 +15,7 @@
         <a href="https://sass-lang.com/" target="_blank"  class="informacion__link">Sass</a>
         <a href="http://ed-grid.com/" target="_blank"  class="informacion__link">EDgrid</a>
         <a href="http://app.fontastic.me/" target="_blank"  class="informacion__link">Fontastic</a>
+        <a href="http://visjs.org/" target="_blank"  class="informacion__link">Vis</a>
       </div>
       <hr class="separador">
 

@@ -1,4 +1,7 @@
 <template>
+<div class="navbar">
+
+
   <header class="main-header">
       <div class="ed-container">
         <div class="ed-item s-1-3 cross-center header-derecha">
@@ -26,6 +29,7 @@
         </div>
       </div>
   </header>
+</div>
 </template>
 
 <script>
