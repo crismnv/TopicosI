@@ -21,12 +21,12 @@ import Trabajo2 from './components/trabajos/Trabajo2.vue';
 
 Vue.use(VueRouter)
 
-function homeGuard(to, from, next) 
+function homeGuard(to,  from, next) 
 {
     next('/trabajos')
 }
-
 const routes = [
+  {path: '/', component: Informacion, beforeEnter: homeGuard},
   {path: '/informacion', component: Informacion},
   {path: '/trabajos', component: Trabajos, children: [
     {path: 'trabajo1', component: Trabajo1},
@@ -46,12 +46,6 @@ export default {
     "nav-bar": NavBar,
     'info': Informacion,
     "trabajos": Trabajos
-  },
-  mounted()
-  {
-    setTimeout(() => {
-          this.$router.push('/trabajos')
-        }, 1000)
   }
 }
 </script>
