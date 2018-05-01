@@ -24,15 +24,17 @@ input,
 select,
 textarea
 {
+    text-align: center;
     font-size: 1.5em;
     border-radius: 5px;
     border: 1px solid $c2;
     color: $c3;
     width: 100%;
+    // margin: 0.5em;
     &:focus
     {
         background-color: $white;
-        border: 1.5px solid $c3;
+        border: 1px solid $c3;
 
     }
    
@@ -43,7 +45,7 @@ select
     &:focus
     {
         background-color: $white;
-        border: 1.5px solid $c3;
+        border: 1px solid $c3;
         
     }
     // & > option:checked
@@ -65,4 +67,22 @@ textarea
     border-width: 1px;
     border-style: bold;
     width: 100%;
+}
+
+.button
+{
+    margin: 1em;
+    color: $white;
+    background: $c3;
+    transition: all .5s ease-in-out;
+    &:hover
+    {
+        color: $white;
+        // background-image: linear-gradient(
+        // 90deg,
+        // $c2,
+        // $c3      
+        // );
+        background: $c2;
+    }
 }

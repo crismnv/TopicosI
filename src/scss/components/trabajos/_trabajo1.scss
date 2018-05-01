@@ -1,8 +1,22 @@
-.main-trabajo--1__grafico
+.main-trabajo1
 {
-    border: 2px solid $c3;
-    padding: 3em;
-    margin-bottom: 1em;
+    &__grafico
+    {
+        border: 2px solid $c3;
+        padding: 3em;
+        margin-bottom: 1em;
+    }
+    &__ingreso-datos
+    {
+        margin: 0.5em;
+        
+    }
+    &__instrucciones
+    {
+        padding-bottom: 1em;
+        padding-top: 0.5em;
+        text-align: center;
+    }
 }
 .main-recorridos
 {
