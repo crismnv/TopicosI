@@ -1,12 +1,12 @@
 class Nodo
 {
-    constructor(numero, texto, rojo)
+    constructor(numero, rojo)
     {
         this.numero = numero
-        this.texto = texto
+        // this.texto = texto
         this.rojo = rojo
-        this.izquierdo = null
-        this.derecho = null
+        this.izquierda = null
+        this.derecha = null
         this.padre = null
 
     }

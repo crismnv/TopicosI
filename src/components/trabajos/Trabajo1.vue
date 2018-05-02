@@ -209,13 +209,13 @@ export default {
           let objetoNode = new Object()
           let objetoEdgeI = new Object()
           let objetoEdgeD = new Object()
-          objetoNode.id = i+1
+          objetoNode.id = i
           objetoNode.label = nodos[i]
           arrayNodes.push(objetoNode)
-          objetoEdgeI.from = i +1
-          objetoEdgeI.to = izq[i] +1
-          objetoEdgeD.from = i +1
-          objetoEdgeD.to = der[i] +1
+          objetoEdgeI.from = i 
+          objetoEdgeI.to = izq[i] 
+          objetoEdgeD.from = i 
+          objetoEdgeD.to = der[i] 
           arrayEdges.push(objetoEdgeI)
           arrayEdges.push(objetoEdgeD)
 
