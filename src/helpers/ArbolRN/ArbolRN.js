@@ -6,6 +6,7 @@ class ArbolRN
 {
     constructor()
     {
+        this.raizRecorrido = null
         this.raiz = null
         this.info = []
         this.izq = []
@@ -15,16 +16,54 @@ class ArbolRN
 
     retornarDataVis()
     {
-
-        console.log("preOrden")
-        console.log(this.preOrden())
-        console.log("izquierda:")
-        console.log(this.izq)
-        console.log("derecha:")
-        console.log(this.der)
+        
         let arrayNodes = []
         let arrayEdges = []
+        let nodes
+        let edges
+        let data
+        if(this.info.length == 1)
+        {
+            arrayNodes = [
+                {id: 0, label: this.info[0] + '', group: 'negro'}
+            ]
+            nodes = new vis.DataSet(arrayNodes)
+            edges = new vis.DataSet(arrayEdges)
+            data =
+                {
+                    nodes,
+                    edges,
+                };
+            return data
+        }else if(this.info.length == 2)
+        {
+            arrayNodes = [
+                { id: 0, label: this.info[0] + '', group: 'negro'},
+                { id: 1, label: this.info[1] + '', group: 'rojo'},
+            ]
+
+            arrayEdges = [
+                {from: 0, to: 1}
+            ]
+            nodes = new vis.DataSet(arrayNodes)
+            edges = new vis.DataSet(arrayEdges)
+            data =
+                {
+                    nodes,
+                    edges,
+                };
+            return data
+        }
+        
+        console.log("preOrden")
+        console.log(this.preOrden())
+        // console.log("izquierda:")
+        // console.log(this.izq)
+        // console.log("derecha:")
+        // console.log(this.der)
+        
         // asignamos un objeto para cada elemento del array de nodos, la doc de vis nos pide un array de objetos
+        let contadorNulos = 0
         for (let i = 0; i < this.info.length; i++) 
         {
             // aumentamos en 1 los resultados porque la numeracion de vis empieza en 1, no en 0-- creo
@@ -36,17 +75,57 @@ class ArbolRN
             // grupo del nodo: rojo|negro
             objetoNode.group = this.rojo[i] ? "rojo" : "negro"
             arrayNodes.push(objetoNode)
-            objetoEdgeI.from = i
-            objetoEdgeI.to = this.izq[i]
-            objetoEdgeD.from = i
-            objetoEdgeD.to = this.der[i]
-            arrayEdges.push(objetoEdgeI)
-            arrayEdges.push(objetoEdgeD)
+            console.log(this.izq)
+            console.log(this.der)
+            console.log(arrayNodes)
+            console.log(arrayEdges)
+
+            if(this.izq[i] == -1)
+            {
+                let auxNodeI =  new Object()
+                auxNodeI.id = this.info.length + contadorNulos
+                auxNodeI.label = 'NULL'
+                auxNodeI.group = 'negro'
+                arrayNodes.push(auxNodeI)
+                
+                objetoEdgeI.from = i
+                objetoEdgeI.to = this.info.length + contadorNulos
+                contadorNulos++
+                arrayEdges.push(objetoEdgeI)
+
+            }else{
+                objetoEdgeI.from = i
+                objetoEdgeI.to = this.izq[i]
+                arrayEdges.push(objetoEdgeI)
+
+                
+            }
+
+            if (this.der[i] == -1) {
+                let auxNodeD = new Object()
+                auxNodeD.id = this.info.length + contadorNulos
+                auxNodeD.label = 'NULL'
+                auxNodeD.group = 'negro'
+                arrayNodes.push(auxNodeD)
+                objetoEdgeD.from = i
+                objetoEdgeD.to = this.info.length + contadorNulos
+                contadorNulos ++
+                arrayEdges.push(objetoEdgeD)
+
+                
+            } else {
+                objetoEdgeD.from = i
+                objetoEdgeD.to = this.der[i]
+                arrayEdges.push(objetoEdgeD)
+
+
+            }
 
         }
-        let nodes = new vis.DataSet(arrayNodes)
-        let edges = new vis.DataSet(arrayEdges)
-        let data = 
+        
+        nodes = new vis.DataSet(arrayNodes)
+        edges = new vis.DataSet(arrayEdges)
+        data = 
         {
             nodes,
             edges,
@@ -55,6 +134,7 @@ class ArbolRN
     }
     añadirVis(nodo)
     {
+        
         // se usará este metodo cuando todos la info esté guardada, osea en el recorrido pre-orden
         console.log("añadirVis")
         console.log(nodo)
@@ -213,6 +293,9 @@ class ArbolRN
             hermanoDePadre = nodo.derecha
             temporal = hermanoDePadre.izquierda
             padreDePadre.izquierda = hermanoDePadre
+            hermanoDePadre.padre = padreDePadre
+            hermanoDePadre.izquierda = nodo
+            nodo.padre = hermanoDePadre
             nodo.derecha = temporal
             if(!isNull(temporal))
             {
@@ -240,36 +323,64 @@ class ArbolRN
     }
     preOrden()
     {
-        if (this.info.length >= 3) 
+        for (let i = 0; i < this.info.length; i++) {
+            this.izq[i] = -1
+            this.der[i] = -1
+            this.rojo[i] = false
+
+        }
+        if(this.info.length  == 1)
         {
-            
+            this.rojo[0] = false
+            this.izq[0] = -1
+            this.der[0] = -1
+            return this.raiz.numero + '.' + this.raiz.rojo
+        } else if (this.info.length == 2)
+        {
+            if (this.info[0] >= this.info[1])
+            {
+                this.izq[0] = -1
+                this.izq[1] = -1
+                this.der[0] = 1
+                this.der[1] = -1
+            }else{
+                this.izq[0] = 1
+                this.izq[1] = -1
+                this.der[0] = -1
+                this.der[1] = -1
+            }
+            this.rojo = [false, true] 
+            return this.info[0] + '.' + this.rojo[0] + '-' + this.info[1] + '.' + this.rojo[1]
+        }else{
+            return this.preOrden3()
         }
     }
     preOrden3() 
     {
+        this.raizRecorrido = this.raiz
         let aux
         let sup = 0
         let pila = []
         // console.log()
-        pila[sup] = this.raiz
-        let salida = this.raiz.numero + '.' + this.raiz.rojo + '-'
-        this.añadirVis(this.raiz)
+        pila[sup] = this.raizRecorrido
+        let salida = this.raizRecorrido.numero + '.' + this.raizRecorrido.rojo + '-'
+        this.añadirVis(this.raizRecorrido)
         let contador = 0
-        while (true ) {
+        while (true && sup >= 0) {
             
             
-            if (pila[sup].numero === this.raiz.numero) {
+            if (pila[sup].numero === this.raizRecorrido.numero) {
                 contador++
             }
             if (contador === 3) {
                 break
             }
     
-            console.log("pila[sup]")
-            console.log(pila[sup])
-            console.log("pila")
-            console.log(pila)
-            console.log(salida)
+            // console.log("pila[sup]")
+            // console.log(pila[sup])
+            // console.log("pila")
+            // console.log(pila)
+            // console.log(salida)
             // si la izquierda no es nula - si tiene hijos izq
             if (!isNull(pila[sup].izquierda) || !pila[sup].izquierda === undefined) {
                 aux = pila[sup].izquierda
@@ -307,33 +418,33 @@ class ArbolRN
                     //     let p = s.join('-')
                     //     return p
                     // }
-                    console.log(" sup")
-                    console.log( sup)
-                    console.log(!pila[sup] === undefined)
+                    // console.log(" sup")
+                    // console.log( sup)
+                    // console.log(!pila[sup] === undefined)
                     // if(!pila[sup] === undefined && sup >= 0)
                     // {
-
-                        if (isNull(pila[sup].izquierda)) 
-                        {
-                            pila[sup].derecha = null
-                        }
-                        pila[sup].izquierda = null
+                    console.log(salida)
+                    if (isNull(pila[sup].izquierda)) 
+                    {
+                        pila[sup].derecha = null
+                    }
+                    pila[sup].izquierda = null
                     // }
                     
                 
                     // pila[sup].derecha = null
-                    console.log("superior: " + sup)
+                    // console.log("superior: " + sup)
                     // console.log("Estamos en:" + pila[sup].numero)
                     
                 }
             }
-            console.log("-----------------------------------------")
+            // console.log("-----------------------------------------")
         }
         // salida pre-orden -> se quita el ultimo guion de mas
         let nsalida = salida.split('-')
         nsalida.pop()
         let preOrden = nsalida.join('-')
-
+        this.raizRecorrido = this.raiz
         return preOrden
     }
 }

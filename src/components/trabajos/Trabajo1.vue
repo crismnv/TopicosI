@@ -32,17 +32,37 @@ export default {
   {
     return {
       inputNumero: '',
-      arbol: new ArbolRN()
+      datos: []
     }
   },
   methods:
   {
+    // insertarNodo()
+    // {
+    //   this.arbol.insertarNodo(parseInt(this.inputNumero))
+    //   // console.log(this.arbol.preOrden())
+    //   // console.log((this.arbol.retornarDataVis()))
+    //   this.iniciarVis(this.arbol.retornarDataVis())
+    //   console.log(this.arbol)
+    // },
     insertarNodo()
     {
-      this.arbol.insertarNodo(parseInt(this.inputNumero))
+      // searchIndex- indice de la busqueda
+      let sIndex = this.datos.indexOf(parseInt(this.inputNumero))
+      if (sIndex != -1) 
+      {
+        alert("Numero Repetido")
+        return  
+      }
+      this.datos.push(parseInt(this.inputNumero))
+      let arbol = new ArbolRN()
+      this.datos.forEach(v => {
+        arbol.insertarNodo(v)
+      });
       // console.log(this.arbol.preOrden())
-      console.log((this.arbol.retornarDataVis()))
-      this.iniciarVis(this.arbol.retornarDataVis())
+      // console.log((this.arbol.retornarDataVis()))
+      this.iniciarVis(arbol.retornarDataVis())
+      // console.log(this.arbol)
     },
     iniciarVis(data)
     {
@@ -98,22 +118,31 @@ export default {
 
         // FIN VIS
     }
-  },
-  beforeMount()
+  }
+  ,
+  mounted()
   {
-    this.arbol.insertarNodo(5)
-    this.arbol.insertarNodo(2)
-    this.arbol.insertarNodo(4)
-    console.log("this.arbol")
-    
-    console.log(this.arbol)
+    // this.arbol.insertarNodo(5)
+    // // console.log(this.arbol.preOrden())
+    // this.arbol.insertarNodo(2)
+    // // console.log(this.arbol.preOrden())
+    // this.arbol.insertarNodo(4)
+    // // console.log(this.arbol.preOrden())
+    // this.arbol.insertarNodo(1)
     // this.arbol.insertarNodo(3)
     // this.arbol.insertarNodo(6)
+    // this.arbol.insertarNodo(8)
+    // this.arbol.insertarNodo(10)
+    // this.iniciarVis(this.arbol.retornarDataVis())
+    // console.log("this.arbol")
+    // console.log(this.arbol.preOrden())
+    // console.log(this.arbol.preOrden())
+    
+    // console.log(this.arbol)
 
-    console.log(this.arbol.preOrden())
     // console.log(this.arbol.retornarDataVis())
   }
-  // mounted()
+  // ,mounted()
   // {
   //   let nodes = new vis.DataSet([
   //       {id: 1, label: 'No hay Informacion'},
