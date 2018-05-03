@@ -1,15 +1,82 @@
 import Nodo from "./Nodo"
 import { isNull } from "util";
-import { SIGABRT } from "constants";
+import vis from "../../../node_modules/vis/dist/vis.js"
 
 class ArbolRN
 {
     constructor()
     {
         this.raiz = null
+        this.info = []
+        this.izq = []
+        this.der= []
+        this.rojo = []
     }
 
-   
+    retornarDataVis()
+    {
+
+        console.log("preOrden")
+        console.log(this.preOrden())
+        console.log("izquierda:")
+        console.log(this.izq)
+        console.log("derecha:")
+        console.log(this.der)
+        let arrayNodes = []
+        let arrayEdges = []
+        // asignamos un objeto para cada elemento del array de nodos, la doc de vis nos pide un array de objetos
+        for (let i = 0; i < this.info.length; i++) 
+        {
+            // aumentamos en 1 los resultados porque la numeracion de vis empieza en 1, no en 0-- creo
+            let objetoNode = new Object()
+            let objetoEdgeI = new Object()
+            let objetoEdgeD = new Object()
+            objetoNode.id = i
+            objetoNode.label = this.info[i] + ''
+            // grupo del nodo: rojo|negro
+            objetoNode.group = this.rojo[i] ? "rojo" : "negro"
+            arrayNodes.push(objetoNode)
+            objetoEdgeI.from = i
+            objetoEdgeI.to = this.izq[i]
+            objetoEdgeD.from = i
+            objetoEdgeD.to = this.der[i]
+            arrayEdges.push(objetoEdgeI)
+            arrayEdges.push(objetoEdgeD)
+
+        }
+        let nodes = new vis.DataSet(arrayNodes)
+        let edges = new vis.DataSet(arrayEdges)
+        let data = 
+        {
+            nodes,
+            edges,
+        };
+        return data
+    }
+    añadirVis(nodo)
+    {
+        // se usará este metodo cuando todos la info esté guardada, osea en el recorrido pre-orden
+        console.log("añadirVis")
+        console.log(nodo)
+        let sIndex = this.info.indexOf(nodo.numero)
+        this.rojo[sIndex] = nodo.rojo
+        if (!isNull(nodo.izquierda))
+        {
+            let izqIndex = this.info.indexOf(nodo.izquierda.numero) 
+            this.izq[sIndex] = izqIndex
+        }else{
+            this.izq[sIndex] = -1
+            
+        }
+        if (!isNull(nodo.derecha)) 
+        {
+            let derIndex = this.info.indexOf(nodo.derecha.numero)
+            this.der[sIndex] = derIndex
+        }else{
+            this.der[sIndex] = -1
+        }
+        
+    }
 
     insertarNodo(numero)
     {
@@ -55,6 +122,8 @@ class ArbolRN
                 this.casoRojoRojo(nuevoNodo.padre, esHijoDer)    
             }
         }
+        // juntar datos para vis
+        this.info.push(numero)
     }
 
     casoRojoRojo(nodo, esHijoDer)
@@ -169,7 +238,14 @@ class ArbolRN
             this.casoRojoRojo(hermanoDePadre, true)
         }        
     }
-    preOrden() 
+    preOrden()
+    {
+        if (this.info.length >= 3) 
+        {
+            
+        }
+    }
+    preOrden3() 
     {
         let aux
         let sup = 0
@@ -177,8 +253,10 @@ class ArbolRN
         // console.log()
         pila[sup] = this.raiz
         let salida = this.raiz.numero + '.' + this.raiz.rojo + '-'
+        this.añadirVis(this.raiz)
         let contador = 0
-        while (true) {
+        while (true ) {
+            
             
             if (pila[sup].numero === this.raiz.numero) {
                 contador++
@@ -195,6 +273,7 @@ class ArbolRN
             // si la izquierda no es nula - si tiene hijos izq
             if (!isNull(pila[sup].izquierda) || !pila[sup].izquierda === undefined) {
                 aux = pila[sup].izquierda
+                this.añadirVis(aux)
                 salida += aux.numero + '.' + aux.rojo + '-'
 
                 sup++
@@ -208,6 +287,8 @@ class ArbolRN
                     aux = pila[sup].derecha
                    
                     salida += aux.numero + '.' + aux.rojo + '-'
+                    this.añadirVis(aux)
+                    
                     sup++
                     pila[sup] = aux
 
@@ -219,14 +300,31 @@ class ArbolRN
 
 
                     sup--
-                    if (isNull(pila[sup].izquierda)) {
-                        pila[sup].derecha = null
-                    }
-                    pila[sup].izquierda = null
+                    // if (pila[sup] === undefined)
+                    // {
+                    //     let s = salida.split('-')
+                    //     s.pop()
+                    //     let p = s.join('-')
+                    //     return p
+                    // }
+                    console.log(" sup")
+                    console.log( sup)
+                    console.log(!pila[sup] === undefined)
+                    // if(!pila[sup] === undefined && sup >= 0)
+                    // {
+
+                        if (isNull(pila[sup].izquierda)) 
+                        {
+                            pila[sup].derecha = null
+                        }
+                        pila[sup].izquierda = null
+                    // }
+                    
+                
                     // pila[sup].derecha = null
                     console.log("superior: " + sup)
                     // console.log("Estamos en:" + pila[sup].numero)
-
+                    
                 }
             }
             console.log("-----------------------------------------")
