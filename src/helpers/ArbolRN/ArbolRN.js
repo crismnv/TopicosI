@@ -25,9 +25,15 @@ class ArbolRN
         if(this.info.length == 1)
         {
             arrayNodes = [
-                {id: 0, label: this.info[0] + '', group: 'negro'}
+                {id: 0, label: this.info[0] + '', group: 'negro'},
+                {id: 1, label: 'NULL', group: 'negro'},
+                {id: 2, label: 'NULL', group: 'negro'}
             ]
             nodes = new vis.DataSet(arrayNodes)
+            arrayEdges = [
+                {from: 0, to: 1},
+                {from: 0, to: 2},
+            ]
             edges = new vis.DataSet(arrayEdges)
             data =
                 {
@@ -40,11 +46,27 @@ class ArbolRN
             arrayNodes = [
                 { id: 0, label: this.info[0] + '', group: 'negro'},
                 { id: 1, label: this.info[1] + '', group: 'rojo'},
+                { id: 2, label: 'NULL', group: 'negro'},
+                { id: 3, label: 'NULL', group: 'negro'},
+                { id: 4, label: 'NULL', group: 'negro'},
             ]
 
-            arrayEdges = [
-                {from: 0, to: 1}
-            ]
+            if(this.info[0] > this.info[1])
+            {
+                arrayEdges = [
+                    {from: 0, to: 1},
+                    {from: 0, to: 2},
+                    {from: 1, to: 3},
+                    {from: 1, to: 4},
+                ]
+            }else{
+                arrayEdges = [
+                    {from: 0, to: 2},
+                    {from: 0, to: 1},
+                    {from: 1, to: 3},
+                    {from: 1, to: 4},
+                ]
+            }
             nodes = new vis.DataSet(arrayNodes)
             edges = new vis.DataSet(arrayEdges)
             data =

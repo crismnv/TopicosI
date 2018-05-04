@@ -37,14 +37,6 @@ export default {
   },
   methods:
   {
-    // insertarNodo()
-    // {
-    //   this.arbol.insertarNodo(parseInt(this.inputNumero))
-    //   // console.log(this.arbol.preOrden())
-    //   // console.log((this.arbol.retornarDataVis()))
-    //   this.iniciarVis(this.arbol.retornarDataVis())
-    //   console.log(this.arbol)
-    // },
     insertarNodo()
     {
       // searchIndex- indice de la busqueda
@@ -77,19 +69,35 @@ export default {
          {
            rojo: 
            {
-             color: {background: 'red'}
+            color: 
+            {
+              background: 'red'
+            },
+            font:
+            {
+              color: 'white',
+              
+            }
            },
            negro: 
            {
-             color: {background: 'black'}
+             color: 
+             {
+              background: 'black'
+             },
+            font:
+            {
+              color: 'white',
+            }
+             
            }
            
          },
           locale: 'es',
           nodes: {
-            color: '#fff',
+            color: '#015249',
             font: {
-                color: '#015249',
+                color: '#fff',
                 size: 20, // px
                 face: 'arial',
             }
@@ -119,47 +127,7 @@ export default {
         // FIN VIS
     }
   }
-  ,
-  mounted()
-  {
-    // this.arbol.insertarNodo(5)
-    // // console.log(this.arbol.preOrden())
-    // this.arbol.insertarNodo(2)
-    // // console.log(this.arbol.preOrden())
-    // this.arbol.insertarNodo(4)
-    // // console.log(this.arbol.preOrden())
-    // this.arbol.insertarNodo(1)
-    // this.arbol.insertarNodo(3)
-    // this.arbol.insertarNodo(6)
-    // this.arbol.insertarNodo(8)
-    // this.arbol.insertarNodo(10)
-    // this.iniciarVis(this.arbol.retornarDataVis())
-    // console.log("this.arbol")
-    // console.log(this.arbol.preOrden())
-    // console.log(this.arbol.preOrden())
-    
-    // console.log(this.arbol)
-
-    // console.log(this.arbol.retornarDataVis())
-  }
-  // ,mounted()
-  // {
-  //   let nodes = new vis.DataSet([
-  //       {id: 1, label: 'No hay Informacion'},
-  //       {id: 2, label: 'Inserte un numero'},
-  //   ]);
-
-  //   // create an array with edges
-  //   let edges = new vis.DataSet([
-  //       {from: 1, to: 2},
-  //   ]);
-  //   let data = 
-  //   {
-  //     nodes,
-  //     edges
-  //   };
-  //   this.iniciarVis(data)
-  // }
+ 
 }
 </script>
 
