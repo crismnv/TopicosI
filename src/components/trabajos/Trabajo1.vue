@@ -39,6 +39,11 @@ export default {
   {
     insertarNodo()
     {
+      if (this.inputNumero == '') 
+      {
+        alert("Ingrese una opción valida")
+        return
+      }
       // searchIndex- indice de la busqueda
       let sIndex = this.datos.indexOf(parseInt(this.inputNumero))
       if (sIndex != -1) 

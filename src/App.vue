@@ -17,8 +17,10 @@ import  Informacion  from "./components/Informacion";
 import  Trabajos  from "./components/Trabajos";
 import Trabajo0 from './components/trabajos/Trabajo0.vue';
 import Trabajo1 from './components/trabajos/Trabajo1.vue';
-import ArbolRN from "./helpers/ArbolRN/ArbolRN";
 import { isNull } from "util";
+import ColaPrioridad from "./helpers/ColaPrioridad/ColaPrioridad";
+import MonticuloMax from "./helpers/ColaPrioridad/MonticuloMax";
+import Cliente from "./helpers/ColaPrioridad/Cliente";
 
 Vue.use(VueRouter)
 
@@ -49,50 +51,72 @@ export default {
     "trabajos": Trabajos
   },
  
-  // mounted()
-  // {
-  //   let a = new ArbolRN
-  //   // for (let i = 0; i < 200; i++) {
-  //   //   a.insertarNodo(i+1)
-      
-  //   // }
-  //   // a.insertarNodo(5)
-  //   // a.insertarNodo(3)
-  //   // a.insertarNodo(6)
-  //   // a.insertarNodo(7)
-  //   // a.insertarNodo(2)
-  //   // a.insertarNodo(4)
-  //   // a.insertarNodo(1)
+ mounted()
+ {
+  //  let m = new MonticuloMax()
+  //  m.añadir(1)
+  //  m.añadir(4)
+  //  m.añadir(2)
+  //  m.añadir(3)
+  //  m.añadir(5)
+  //  m.añadir(6)
+  //  m.sacar()
+  //  m.sacar()
+   let c = new ColaPrioridad()
+   
+   c.añadir(new Cliente(1,1))
+   console.log(c.clientes);
+   c.añadir(new Cliente(2,1))
+   console.log(c.clientes);
+   c.añadir(new Cliente(3,2))
+   console.log(c.clientes);
+   c.añadir(new Cliente(4,4))
+   console.log(c.clientes);
+   c.añadir(new Cliente(5,1))
+   console.log(c.clientes);
+   c.añadir(new Cliente(6,4))
+   console.log(c.clientes);
+  //  console.log('Se saco:' )
+   c.sacar()
+   console.log(c.clientes);
+   c.sacar()
+   console.log(c.clientes);
+   c.sacar()
+   console.log(c.clientes);
+   c.sacar()
+   console.log(c.clientes);
+   c.sacar()
+   console.log(c.clientes);
+   c.sacar()
+   console.log(c.clientes);
+  //  c.sacar()
+  //  console.log(c.clientes);
+  //  c.sacar()
+  //  console.log(c.clientes);
+  //  c.sacar()
+  //  console.log(c.clientes);
+  //  c.sacar()
+  //  console.log(c.clientes);
+   
 
-  //   // a.insertarNodo(10)
-  //   // a.insertarNodo(9)
-  //   // a.insertarNodo(5)
-  //   // a.insertarNodo(4)
-  //   // a.insertarNodo(6)
-  //   // a.insertarNodo(7)
-  //   // a.insertarNodo(12)
-  //   // a.insertarNodo(11)
-  //   // a.insertarNodo(13)
-
-
-  //   a.insertarNodo(8)
-  //   a.insertarNodo(90)
-  //   // a.insertarNodo(12)
-  //   // a.insertarNodo(60)
-  //   // a.insertarNodo(3)
-  //   // a.insertarNodo(23)
-
-
-  //   console.log(a)
-  //   console.log(a.preOrden())
-  //   console.log(a.retornarDataVis())
-  //   // console.log(a.info)
-  //   // console.log(a.izq)
-  //   // console.log(a.der)
-  //   // console.log(a.rojo)
-  //   // a.vis()
-  //   // console.log(a.visNodos)
-  // }
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+  //  console.log(c.datos);
+  //  c.sacar()
+ }
 }
 </script>
 
