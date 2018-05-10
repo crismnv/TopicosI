@@ -17,10 +17,12 @@ import  Informacion  from "./components/Informacion";
 import  Trabajos  from "./components/Trabajos";
 import Trabajo0 from './components/trabajos/Trabajo0.vue';
 import Trabajo1 from './components/trabajos/Trabajo1.vue';
+import Trabajo2 from './components/trabajos/Trabajo2.vue';
 import { isNull } from "util";
 import ColaPrioridad from "./helpers/ColaPrioridad/ColaPrioridad";
 import MonticuloMax from "./helpers/ColaPrioridad/MonticuloMax";
 import Cliente from "./helpers/ColaPrioridad/Cliente";
+import Banco from "./helpers/ColaPrioridad/Banco";
 
 Vue.use(VueRouter)
 
@@ -33,7 +35,8 @@ const routes = [
   {path: '/informacion', component: Informacion},
   {path: '/trabajos', component: Trabajos, children: [
     {path: 'trabajo0', component: Trabajo0},
-    {path: 'trabajo1', component: Trabajo1}
+    {path: 'trabajo1', component: Trabajo1},
+    {path: 'trabajo2', component: Trabajo2}
   ]}
 ]
 
@@ -49,74 +52,12 @@ export default {
     "nav-bar": NavBar,
     'info': Informacion,
     "trabajos": Trabajos
-  },
- 
- mounted()
- {
-  //  let m = new MonticuloMax()
-  //  m.añadir(1)
-  //  m.añadir(4)
-  //  m.añadir(2)
-  //  m.añadir(3)
-  //  m.añadir(5)
-  //  m.añadir(6)
-  //  m.sacar()
-  //  m.sacar()
-   let c = new ColaPrioridad()
-   
-   c.añadir(new Cliente(1,1))
-   console.log(c.clientes);
-   c.añadir(new Cliente(2,1))
-   console.log(c.clientes);
-   c.añadir(new Cliente(3,2))
-   console.log(c.clientes);
-   c.añadir(new Cliente(4,4))
-   console.log(c.clientes);
-   c.añadir(new Cliente(5,1))
-   console.log(c.clientes);
-   c.añadir(new Cliente(6,4))
-   console.log(c.clientes);
-  //  console.log('Se saco:' )
-   c.sacar()
-   console.log(c.clientes);
-   c.sacar()
-   console.log(c.clientes);
-   c.sacar()
-   console.log(c.clientes);
-   c.sacar()
-   console.log(c.clientes);
-   c.sacar()
-   console.log(c.clientes);
-   c.sacar()
-   console.log(c.clientes);
-  //  c.sacar()
-  //  console.log(c.clientes);
-  //  c.sacar()
-  //  console.log(c.clientes);
-  //  c.sacar()
-  //  console.log(c.clientes);
-  //  c.sacar()
-  //  console.log(c.clientes);
-   
-
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
-  //  console.log(c.datos);
-  //  c.sacar()
- }
+  }
+//   ,
+//  mounted()
+//  {
+  
+//  }
 }
 </script>
 

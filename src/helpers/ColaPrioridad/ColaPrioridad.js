@@ -1,4 +1,5 @@
-import { isNull } from "util";
+import { isNull } from "util"
+import vis from "../../../node_modules/vis/dist/vis.js"
 
 class ColaPrioridad
 {
@@ -8,6 +9,11 @@ class ColaPrioridad
         this.clientes = []
     }
 
+    cantidadDeClientes()
+    {
+        return this.clientes.length
+    }
+
     añadir(cliente)
     {
         this.clientes.push(cliente)
@@ -15,6 +21,8 @@ class ColaPrioridad
         if (this.clientes.length != 1) 
             this.comprobarHaciaArriba(this.clientes.length)
         // Comprobaremos si el nuevo elemento esta bien posicionado
+        console.log(this.clientes)
+        
     }
     // Los Parametros se estan trabajando como si el array empezara en 1, y en el metodo se cambia
     comprobarHaciaArriba(posNodo)
@@ -53,13 +61,13 @@ class ColaPrioridad
     {
         if(this.clientes.length <= 0)
         {
-            alert("Ya no hay mas clientes en la cola")
-            return
+            // alert("Ya no hay mas clientes en la cola")
+            return null
         }
         let r = this.clientes[0]
         this.clientes[0] = this.clientes[this.clientes.length - 1]
         this.clientes.pop()
-        console.log('Se saca el lvl de tarjeta: ' + r.nivelTarjeta + " con entrada: " + r.nroLlegada)
+        // console.log('Se saca el lvl de tarjeta: ' + r.nivelTarjeta + " con entrada: " + r.nroLlegada)
         // console.log('Array sin modificar->')
         // console.log(this.datos)
 
@@ -132,6 +140,77 @@ class ColaPrioridad
                 }
             }
         }
+    }
+
+    datosVis()
+    {
+        if(this.clientes.length < 1)
+            return {}
+         
+        let arrayNodes = []
+        let arrayEdges = []
+        for (let i = 1; i <= this.clientes.length; i++) 
+        {
+
+            let o = new Object()
+            o.id = i - 1
+            let tarjeta
+            switch (this.clientes[i - 1].nivelTarjeta) {
+                case 1:
+                    tarjeta = 'Clásica'       
+                    break;
+                case 2:
+                    tarjeta = 'Dorada'       
+                    break;
+                case 3:
+                    tarjeta = 'Platino'       
+                    break;
+                case 4:
+                    tarjeta = 'Maestra'       
+                    break;
+            
+            }
+            o.label = 'N:' + this.clientes[i - 1].nroLlegada + ' - ' + tarjeta
+            o.group = this.clientes[i - 1].nivelTarjeta
+            arrayNodes.push(o)
+            
+        }
+
+        for (let i = 1; i <= this.clientes.length; i++) 
+        {
+            let o2 = new Object()
+            o2.from = i - 1
+            o2.to =  i * 2  - 1
+            arrayEdges.push(o2)
+
+            let o3 = new Object()
+            o3.from = i - 1
+            o3.to =  i * 2 
+            arrayEdges.push(o3)
+            // if (2*i -2> this.clientes.length) 
+            //     break
+        }
+        if(this.clientes.length % 2 == 0)
+        {
+            let o = new Object()
+            o.id = this.clientes.length
+            o.label = 'NULL'
+            o.group = 666
+            let o2 = new Object()
+            o2.from = this.clientes.length / 2 - 1 
+            o2.to = this.clientes.length
+            arrayNodes.push(o)
+            arrayEdges.push(o2)
+        }
+        let nodes = new vis.DataSet(arrayNodes)
+        let edges = new vis.DataSet(arrayEdges)
+        let data = 
+        {
+            nodes,
+            edges,
+        };
+        return data
+
     }
 }
 

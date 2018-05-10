@@ -34,9 +34,13 @@
 
 <script>
 
-
+import edgrid from "../../node_modules/ed-grid/js/ed-grid";
 export default {
     name: "NavBar",
+    mounted()
+    {
+        edgrid.menu('nav', 'menu')
+    }
 }
 </script>
 
