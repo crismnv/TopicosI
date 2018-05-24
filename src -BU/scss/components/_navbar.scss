@@ -1,0 +1,94 @@
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $c1;
+    z-index: 100;
+}
+.main-header
+{
+    color: $c3;
+    background-color: $white;
+    border-bottom: 0.1px solid $c3;
+    &__title
+    {
+        white-space: nowrap;
+    }
+    &__autor
+    {
+        transform: translateY(3px);
+        height: 45px;
+        transition: all .75s ease-in-out;
+        &:hover
+        {
+            transform: translateY(6px) rotate(180deg);
+        }
+        
+        @include to(m)
+        {
+            // background: red;
+            display: none;
+        }
+    }
+}
+
+.header-derecha
+{
+    height: 55px;
+}
+
+.main-menu
+{
+    
+    @include edMenu($bp-menu);
+    &__link
+    {
+        height: 55px;
+        white-space: nowrap;
+        color: inherit;
+        transition: all .4s ease-in-out;   
+        &.active
+        {
+            @include to($bp-menu)
+            {
+                background: $white;
+                color: $c3;
+            }
+            background: $c3;
+            color: $white;
+        }
+    }
+}
+
+.header-izquierda
+{
+    @include from($bp-menu)
+    {
+        padding-left: 0;
+        padding-right: 0;
+
+    }
+    
+}
+
+.main-nav
+{
+    @include edNav(right, $bp-menu);
+
+    @include to($bp-menu)
+    {
+        color: $white;
+        background: $c3;
+        align-self: stretch;
+        margin-top: 55px;
+        width: 50%;
+    }
+}
+
+
+.nav-toggle
+{
+    @include navToggle(15px, $c3);
+    @include hideFrom($bp-menu);
+}
+

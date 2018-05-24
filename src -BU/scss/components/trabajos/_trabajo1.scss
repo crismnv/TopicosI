@@ -1,0 +1,21 @@
+.main-trabajo1
+{
+    &__title
+    {
+        font-size: 1.2em;
+        span:nth-child(1)
+        {
+            color: red;
+        }
+        span:nth-child(2)
+        {
+            color: black;
+        }
+    }
+     &__grafico
+    {
+        border: 2px solid $c3;
+        padding: 3em;
+        margin-bottom: 1em;
+    }
+}

@@ -57,7 +57,7 @@ export default {
         arbol.insertarNodo(v)
       });
       // console.log(this.arbol.preOrden())
-      // console.log((arbol.retornarDataVis()))
+      console.log((arbol.retornarDataVis()))
       this.iniciarVis(arbol.retornarDataVis())
       // console.log(this.arbol)
     },

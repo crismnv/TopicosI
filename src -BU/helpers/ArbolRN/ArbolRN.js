@@ -77,7 +77,8 @@ class ArbolRN
             return data
         }
         
-        this.preOrden()
+        // console.log("preOrden")
+        // console.log(this.preOrden())
         // console.log("izquierda:")
         // console.log(this.izq)
         // console.log("derecha:")
@@ -96,10 +97,6 @@ class ArbolRN
             // grupo del nodo: rojo|negro
             objetoNode.group = this.rojo[i] ? "rojo" : "negro"
             arrayNodes.push(objetoNode)
-            console.log(this.izq)
-            console.log(this.der)
-            console.log(arrayNodes)
-            console.log(arrayEdges)
 
             if(this.izq[i] == -1)
             {
@@ -121,7 +118,8 @@ class ArbolRN
 
                 
             }
-
+                // console.log(this.der)
+            
             if (this.der[i] == -1) {
                 let auxNodeD = new Object()
                 auxNodeD.id = this.info.length + contadorNulos
@@ -136,6 +134,8 @@ class ArbolRN
                 
             } else {
                 objetoEdgeD.from = i
+                // console.log(this.der)
+                
                 objetoEdgeD.to = this.der[i]
                 arrayEdges.push(objetoEdgeD)
 
@@ -157,8 +157,8 @@ class ArbolRN
     {
         
         // se usará este metodo cuando todos la info esté guardada, osea en el recorrido pre-orden
-        console.log("añadirVis")
-        console.log(nodo)
+        // console.log("añadirVis")
+        // console.log(nodo)
         let sIndex = this.info.indexOf(nodo.numero)
         this.rojo[sIndex] = nodo.rojo
         if (!isNull(nodo.izquierda))
@@ -444,7 +444,7 @@ class ArbolRN
                     // console.log(!pila[sup] === undefined)
                     // if(!pila[sup] === undefined && sup >= 0)
                     // {
-                    console.log(salida)
+                    // console.log(salida)
                     if (isNull(pila[sup].izquierda)) 
                     {
                         pila[sup].derecha = null
