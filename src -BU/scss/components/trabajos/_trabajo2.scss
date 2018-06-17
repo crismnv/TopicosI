@@ -7,7 +7,7 @@
     }
      &__grafico
     {
-        border: 2px solid $c3;
+        border: 2px solid darken($c3, 40%);
         // padding: 3em;
         margin-bottom: 1em;
         height: 400px;

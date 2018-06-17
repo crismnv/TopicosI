@@ -1,27 +1,27 @@
 import vis from "../../../node_modules/vis/dist/vis.js"
 class Grafo
 {
-    constructor()
-    {
-        this.nodos = []
-        this.rutas = []
-        this.pesos = []
-        this.rutas = []
-        this.nombres = []
-    }
     // constructor()
     // {
-    //     this.nombres = ['R', 'S', 'T', 'U']
-    //     this.nodos = [
-    //         [0, 4, 1, 2],
-    //         [4, 0, 2, 5],
-    //         [1, 2, 0, 6],
-    //         [2, 5, 6, 0],
-    //     ]
-        
-    //     this.pesos= [[], [], [], []]
-    //     this.rutas= [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']]
+    //     this.nodos = []
+    //     this.rutas = []
+    //     this.pesos = []
+    //     this.rutas = []
+    //     this.nombres = []
     // }
+    constructor()
+    {
+        this.nombres = ['R', 'S', 'T', 'U']
+        this.nodos = [
+            [0, 4, 1, 2],
+            [4, 0, 2, 5],
+            [1, 2, 0, 6],
+            [2, 5, 6, 0],
+        ]
+        
+        this.pesos= [[], [], [], []]
+        this.rutas= [[[], [], [], []], [[], [], [], []], [[], [], [], []], [[], [], [], []]]
+    }
     // constructor()
     // {
     //     this.nombres = ['A', 'B', 'C', 'D', 'V']
