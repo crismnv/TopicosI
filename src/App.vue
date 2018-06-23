@@ -20,6 +20,7 @@ import Trabajo1 from './components/trabajos/Trabajo1.vue';
 import Trabajo2 from './components/trabajos/Trabajo2.vue';
 import Trabajo3 from './components/trabajos/Trabajo3.vue';
 import Trabajo4 from './components/trabajos/Trabajo4.vue';
+import Trabajo5 from './components/trabajos/Trabajo5.vue';
 import { isNull } from "util";
 import ColaPrioridad from "./helpers/ColaPrioridad/ColaPrioridad";
 import Grafo  from "./helpers/Dijkstra/Grafo";
@@ -40,6 +41,7 @@ const routes = [
     {path: 'trabajo2', component: Trabajo2},
     {path: 'trabajo3', component: Trabajo3},
     {path: 'trabajo4', component: Trabajo4},
+    {path: 'trabajo5', component: Trabajo5},
   ]}
 ]
 

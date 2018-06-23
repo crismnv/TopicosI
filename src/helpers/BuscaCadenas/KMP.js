@@ -36,7 +36,7 @@ class KMP
         // posicion del caracter actual en el patron
         let i = 0
 
-        let tabla = this.crearTabla(cadena)
+        let tabla = this.crearTabla(patron)
 
         let r = new Object()
         r.posicion = -1
